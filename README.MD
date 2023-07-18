@@ -1,17 +1,19 @@
-Задача
+# Task:
 
-Имеется некая система, которая обрабатывает авиаперелёты. Перелёт — это перевозка пассажира из одной точки в другую с возможными промежуточными посадками. Т. о. перелёт можно представить как набор из одного или нескольких элементарных перемещений, называемых сегментами. Сегмент — это атомарная перевозка, которую для простоты будем характеризовать всего двумя атрибутами: дата/время вылета и дата/время прилёта.
+There is a certain system that processes airline flights. A flight is a passenger's transportation from one point to another with possible intermediate stops. Therefore, a flight can be represented as a set of one or more elementary movements called segments. A segment is an atomic transport, which, for simplicity, will be characterized by just two attributes: departure date/time and arrival date/time.
 
-Вам нужно написать небольшой модуль, который будет заниматься фильтрацией набора перелётов согласно различным правилам. Правил фильтрации может быть очень много. Также наборы перелётов могут быть очень большими. Правила могут выбираться и задаваться динамически в зависимости от контекста выполнения операции фильтрации.
+You are required to develop a small module that will be responsible for filtering a set of flights based on various rules. There can be a large number of filtering rules, and the sets of flights can be extremely large. The rules for filtering may be dynamically selected and defined depending on the context of the filtering operation.
 
-Продумайте структуру модуля, создайте необходимые классы и интерфейсы. Если знакомы с JUnit, то покройте свой код тестами. Пользовательский интерфейс не рассматривайте. Достаточно вывода информации в консоль. Никаких сторонних библиотек использовать не нужно.
+Design the structure of the module, create the necessary classes and interfaces. If you are familiar with JUnit, please test your code with unit tests. Do not consider a user interface; it is sufficient to output information to the console. Avoid the use of any external libraries.
 
-Приложенный файл TestClasses.java содержит упрощённые модельные классы и фабрику для получения тестовых образцов. Весь код необходимо поместить в пакет com.gridnine.testing
+The attached file "TestClasses.java" contains simplified model classes and a factory for obtaining test samples. All the code should be placed in the package "com.gridnine.testing."
 
-Для проверочного запуска создайте публичный класс Main c методом main() Этот метод должен выдать в консоль результаты обработки тестового набора перелётов. Получить тестовый набор нужно методом FlightBuilder.createFlights()
+For a validation run, create a public class called "Main" with the main() method. This method should output the results of processing the test set of flights to the console. To obtain the test set, use the method FlightBuilder.createFlights().
 
-Поместите в main() такой проверочный код. Исключите из тестового набора перелёты по следующим правилам (по каждому правилу нужен отдельный вывод списка перелётов):
+Place the following validation code inside the main() method. Exclude flights from the test set according to the following rules (each rule should have a separate output of the flight list):
 
-вылет до текущего момента времени
-имеются сегменты с датой прилёта раньше даты вылета
-общее время, проведённое на земле превышает два часа (время на земле — это интервал между прилётом одного сегмента и вылетом следующего за ним)
+Departures before the current time.
+
+Flights with segments where the arrival date is earlier than the departure date.
+
+Total time spent on the ground exceeds two hours (ground time is the interval between the arrival of one segment and the departure of the next segment).

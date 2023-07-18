@@ -1,9 +1,37 @@
 package com.gridnine.testing;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+import com.gridnine.testing.filters.*;
+import com.gridnine.testing.model.Flight;
 
-        FlightBuilder.createFlights();
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        List<Flight> flightList = FlightBuilder.createFlights();
+        flightList.forEach(System.out::println);
+        System.out.println();
+
+        FlightFilter filter1 = new FlightFilterDepartingBeforeArrives();
+        filter1.filter(flightList).forEach(System.out::println);
+        System.out.println();
+
+        FlightFilter filter2 = new FlightFilterDepartingInPast();
+        filter2.filter(flightList).forEach(System.out::println);
+        System.out.println();
+
+        FlightFilter filter3 = new FlightFilterTimeOnEarthLessThanTwoHours();
+        filter3.filter(flightList).forEach(System.out::println);
+        System.out.println();
+
+        FlightFilterFabric filterFabric = new FlightFilterFabric(Arrays.asList(
+                filter1,
+                filter2,
+                filter3
+        ));
+
+        filterFabric.doFilter(flightList).forEach(System.out::println);
     }
 }

@@ -1,6 +1,9 @@
 package com.gridnine.testing;
 
 
+import com.gridnine.testing.model.Flight;
+import com.gridnine.testing.model.Segment;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
